@@ -8,6 +8,7 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
+  # vmImage options: ubuntu-latest, windows-latest or macos-latest
 
 steps:
 - task: Maven@3
@@ -26,3 +27,9 @@ steps:
       # Write your commands here
       echo 'Hello world from the task assistant'
       echo 'Hello world directly from the editor'
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: "JaCoCo"
+    summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml"
+    reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
+    failIfCoverageEmpty: true
