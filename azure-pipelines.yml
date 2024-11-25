@@ -5,6 +5,7 @@
 
 trigger:
 - main
+# Wildcards work in these files: eg. feature/*
 
 strategy:
   matrix:
